@@ -81,12 +81,13 @@ func (s *Server) ListPodSandbox(ctx context.Context, req *pb.ListPodSandboxReque
 		}
 
 		pod := &pb.PodSandbox{
-			Id:          sb.ID(),
-			CreatedAt:   podInfraContainer.CreatedAt().UnixNano(),
-			State:       rStatus,
-			Labels:      sb.Labels(),
-			Annotations: sb.Annotations(),
-			Metadata:    sb.Metadata(),
+			Id:             sb.ID(),
+			CreatedAt:      podInfraContainer.CreatedAt().UnixNano(),
+			State:          rStatus,
+			Labels:         sb.Labels(),
+			Annotations:    sb.Annotations(),
+			Metadata:       sb.Metadata(),
+			RuntimeHandler: sb.RuntimeHandler(),
 		}
 
 		// Filter by other criteria such as state and labels.

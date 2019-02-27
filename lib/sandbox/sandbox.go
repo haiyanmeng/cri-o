@@ -306,6 +306,11 @@ func (s *Sandbox) Hostname() string {
 	return s.hostname
 }
 
+// RuntimeHandler ruturns the runtime handler of the sandbox
+func (s *Sandbox) RuntimeHandler() string {
+	return s.runtimeHandler
+}
+
 // PortMappings returns a list of port mappings between the host and the sandbox
 func (s *Sandbox) PortMappings() []*hostport.PortMapping {
 	return s.portMappings

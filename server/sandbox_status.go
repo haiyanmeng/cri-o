@@ -44,14 +44,15 @@ func (s *Server) PodSandboxStatus(ctx context.Context, req *pb.PodSandboxStatusR
 	sandboxID := sb.ID()
 	resp = &pb.PodSandboxStatusResponse{
 		Status: &pb.PodSandboxStatus{
-			Id:          sandboxID,
-			CreatedAt:   podInfraContainer.CreatedAt().UnixNano(),
-			Network:     &pb.PodSandboxNetworkStatus{Ip: sb.IP()},
-			State:       rStatus,
-			Labels:      sb.Labels(),
-			Annotations: sb.Annotations(),
-			Metadata:    sb.Metadata(),
-			Linux:       linux,
+			Id:             sandboxID,
+			CreatedAt:      podInfraContainer.CreatedAt().UnixNano(),
+			Network:        &pb.PodSandboxNetworkStatus{Ip: sb.IP()},
+			State:          rStatus,
+			Labels:         sb.Labels(),
+			Annotations:    sb.Annotations(),
+			Metadata:       sb.Metadata(),
+			Linux:          linux,
+			RuntimeHanlder: sb.RuntimeHandler(),
 		},
 	}
 
